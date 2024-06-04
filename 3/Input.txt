@@ -1,0 +1,12 @@
+1    	! L
+4    	! m   sin(m*pi/L*x)
+0.75	! C: du/dt+C*du/dx=0
+201   	! NX
+51  	! NT
+0.28 	! CFL
+1	! signal_type
+1	! SCHEME: 1 - upwind scheme, 2 - upwind scheme 2nd order
+
+
+
+
