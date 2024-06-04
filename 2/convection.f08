@@ -38,6 +38,9 @@ contains
         u(0) = u(nx-1) 
         u(nx+1) = u(2)
 
+        un(0) = un(nx-1) 
+        un(nx+1) = un(2)
+
     end subroutine
 
     subroutine output(x, un, nx, IO)
@@ -128,9 +131,8 @@ implicit none
                     un(i) = u(i) - cfl * (u(i+1)-u(i))
                 endif
             end do
-            un(0) = un(nx - 1)
-            un(nx+1) = un(2)
             u = un
+            call boundvalue(u, un, nx)
         end do
 
         if (signal_type == 1) then
@@ -169,9 +171,8 @@ implicit none
                     do i = 2, nx
                         un(i) = u(i)-(cfl/2)*(3*u(i)-4*u(i-1)+u(i-2))
                     end do
-                    un(0) = un(nx - 1)
-                    un(nx+1) = un(2)
                     u = un
+                    call boundvalue(u, un, nx)
                 end do
 
         elseif (c<0) then
@@ -184,6 +185,7 @@ implicit none
                 un(0) = un(nx - 1)
                 un(nx+1) = un(2)
                 u = un
+                call boundvalue(u, un, nx)
             end do
         end if
 
