@@ -123,7 +123,6 @@ implicit none
         endif
     elseif (scheme == 2) then 
         if (c>0) then
-            un(1) = u(1) - (cfl/4)*(3*u(1)**2-4*u(nx-1)**2+u(nx-2)**2)
                 do j = 1, nt
                 un(1) = u(1) - (cfl/4)*(3*u(1)**2-4*u(nx-1)**2+u(nx-2)**2)
                     do i = 2, nx
